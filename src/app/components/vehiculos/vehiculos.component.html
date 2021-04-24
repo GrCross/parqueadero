@@ -1,0 +1,107 @@
+
+<div class="vehiculos">
+
+    <!--Modal-->
+    <div class="modalContainer">
+        <ng-template #content let-modal>
+            <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Agregar vehiculo</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <form>
+                <div class="form-group">
+                <label for="placa">Placa</label>
+                <div class="input-group">
+                    <input 
+                        id="placa"
+                        type="text"
+                        name="inputPlaca"
+                        placeholder="Ingrese la placa"
+                        class="form-control"
+                        [(ngModel)]="inputPlaca"
+                    />
+                </div>
+
+                <label for="color">Color</label>
+                <div class="input-group">
+                    <input 
+                        id="color"
+                        type="text"
+                        name="inputColor"
+                        placeholder="Ingrese el color"
+                        class="form-control"
+                        [(ngModel)]="inputColor"
+                    />
+                </div>
+
+                <label for="marca">Marca</label>
+                <div class="input-group">
+                    <input 
+                        id="marca"
+                        type="text"
+                        name="inputMarca"
+                        placeholder="Ingrese la marca"
+                        class="form-control"
+                        [(ngModel)]="inputMarca"
+                    />
+                </div>
+
+                <label for="tipo">Tipo</label>
+                <div class="input-group">
+                    <input 
+                        id="tipo"
+                        type="text"
+                        name="inputTipo"
+                        placeholder="Ingrese el tipo"
+                        class="form-control"
+                        [(ngModel)]="inputTipoVehiculo"
+                    />
+                </div>
+
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+            </div>
+        </ng-template>
+        
+        <button class="submitButton" (click)="open(content)">Agregar vehiculo</button>
+    </div>
+
+    <!--Tabla-->
+    <div style="padding: 5%">
+        <table class="vehiculoTable">
+            <tr>
+                <th>Placa</th>
+                <th>Color</th>
+                <th>Marca</th>
+                <th>Tipo</th>
+                <th>Hora de Ingreso</th>
+                <th>Hora de Salida</th>
+                <th>Total a pagar</th>
+            </tr>
+            <tr *ngFor ="let Vehiculo of vehiculos, let i = index;">
+                <td class="placa">{{Vehiculo.placa}}</td>
+                <td class="color">{{Vehiculo.color}}</td>
+                <td class="marca">{{Vehiculo.marca}}</td>
+                <td class="tipo">{{Vehiculo.tipoVehiculo}}</td>
+                <td class="horaEntrada">{{Vehiculo.horaIngreso}}</td>
+                <td>
+                    <button *ngIf="!Vehiculo.horaSalida" class="agregar" (click) = "toggleExit(i)">marcar Salida</button>
+                    {{Vehiculo.horaSalida}}
+                </td>
+                <td class="totalPago">{{Vehiculo.totalPago}}</td>
+                
+            </tr>
+    
+    
+        </table>
+    </div>
+    
+
+    
+</div>
