@@ -26,8 +26,7 @@ export class ApiService{
 
     //Actualizar vehiculo con la fecha y hora de salida
     patchVehiculo(vehiculo: Vehiculo): Observable<any>{
-        const params = new HttpParams().set('placa',vehiculo.placa);
-        console.log(vehiculo)        
+        const params = new HttpParams().set('placa',vehiculo.placa);        
         return this.httpClient.patch('http://localhost:3000/parqueadero/vehiculo/'+vehiculo.identifier,vehiculo);
     }
 
